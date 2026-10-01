@@ -72,7 +72,7 @@ export default function Home() {
   return <div className="app-shell">
     <header className="topbar"><a className="brand" href="/" aria-label="PAIR 홈"><span className="brand-icon"><Link2 size={25} strokeWidth={2.8} /></span>PAIR<span className="brand-caption">카테부</span></a><span className="header-note"><span className="tiny-square" /> 실시간 모의면접 매칭</span></header>
     <main>
-      <div className="intro"><div><div className="eyebrow">MOCK INTERVIEW CLUB <span>/</span> LIVE MATCHING</div><h1>지금, 함께 연습할 사람.</h1><p>파트너를 찾아다니는 대신, 여기서 바로 만나요.</p></div><button className="share-button" onClick={async () => { try { await navigator.clipboard.writeText(location.origin); setCopied(true); setTimeout(() => setCopied(false), 2500); } catch { setError("주소창의 링크를 복사해서 공유해 주세요."); } }}>{copied ? <Check size={16} /> : <Copy size={16} />}{copied ? "링크 복사됨" : "팀원에게 공유"}</button></div>
+      <div className="intro"><div><div className="eyebrow"> </div><h1>지금, 함께 연습할 사람.</h1><p>파트너를 찾아다니는 대신, 여기서 바로 만나요.</p></div><button className="share-button" onClick={async () => { try { await navigator.clipboard.writeText(location.origin); setCopied(true); setTimeout(() => setCopied(false), 2500); } catch { setError("주소창의 링크를 복사해서 공유해 주세요."); } }}>{copied ? <Check size={16} /> : <Copy size={16} />}{copied ? "링크 복사됨" : "팀원에게 공유"}</button></div>
       {error && <div className="error" role="alert">{error}<button onClick={() => { void request().then(() => setReady(true)).catch(e => setError(e.message)); }}>다시 연결</button></div>}
       <div className="workspace">
         <section className="form-panel" aria-labelledby="form-title">
@@ -100,6 +100,6 @@ export default function Home() {
       </div>
       <section className="how-it-works"><div className="how-title">좋은 연습은<br /><strong>이렇게 시작해요.</strong></div><div><span>01</span><h3>내 정보 입력하기</h3><p>닉네임과 팀, 부서만 알려주세요.</p></div><div><span>02</span><h3>매칭 시작 누르기</h3><p>같은 부서의 대기자와 바로 연결돼요.</p></div><div><span>03</span><h3>파트너와 만나기</h3><p>팀과 닉네임을 확인하고 시작해요.</p></div></section>
     </main>
-    <footer><span className="footer-brand">PAIR <span>×</span> 카테부</span><span>혼자 고민하던 면접을, 함께.</span><span>AI · FULL STACK · CLOUD</span></footer>
+    <footer><span className="footer-brand">PAIR <span>×</span> 카테부</span><span> 카카오 부트캠프 AX 기술 동아리.</span><span>AI · FULL STACK · CLOUD</span></footer>
   </div>;
 }
