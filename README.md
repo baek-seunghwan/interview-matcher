@@ -1,8 +1,15 @@
 # PAIR · 카테부 실시간 모의면접 매칭
 
-**닉네임 + 팀(예: 14팀) + 부서(AI / 풀스택 / 클라우드)**를 입력하고 **매칭 시작**을 누르면 같은 부서의 대기자와 즉시 1:1로 연결됩니다. 날짜·시간·장소 입력은 없습니다.
+**1~20팀 선택 → 본인 이름 선택 → 매칭 시작**을 누르면 같은 부서의 대기자와 즉시 1:1로 연결됩니다. 부서는 제공된 엑셀 명단에서 자동으로 설정됩니다.
 
-- [온라인 사이트](https://katebu-interview-matcher.vivid-knoll-0500.chatgpt.site)
+- 수정된 엑셀 `(1).xlsx`의 20개 팀 114명 명단과 좌석 배치를 반영했습니다. 영어 이름은 점 앞 닉네임만 표시합니다.
+- 한국 시간 기준 오늘 성사된 매칭을 한 쌍당 1건으로 집계합니다. 업데이트 이후부터 집계하며, 면접 완료 횟수와는 다릅니다.
+- 대기 중 지렁이 게임과 초 단위 대기 시간을 표시합니다. 화면 끝을 통과하면 반대편에서 나오고 자기 몸·꼬리에 닿으면 종료합니다.
+- ‘제가 갈게요’ / ‘제가 기다릴게요’ 선택을 양쪽에 반대로 반영합니다. 전체 자리표는 한 화면에 모든 팀을 보여주며 내 자리와 파트너 자리만 구분합니다. ‘만날 자리’ 선택은 제거했습니다.
+- 크롬 알림은 사이트의 알림 받기 버튼으로 허용해야 하며 페이지가 열려 있어야 합니다.
+- [이번 업데이트와 검증 방법](site/MATCHING.md)
+
+- [온라인 사이트](https://ktb-ax-interveiw.vivid-knoll-0500.chatgpt.site)
 - [기획서](docs/기획서.md)
 - 앱 소스: `site/` (React + Vinext + Cloudflare Workers/D1)
 - 서버 DB 원자적 매칭, 2초 상태 갱신, 취소·재매칭·완료 지원
@@ -24,7 +31,7 @@ npm run build
 node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js d1 execute DB --local --config dist/server/wrangler.json --persist-to .wrangler/state --file drizzle/0000_workable_iron_man.sql
 ```
 
-`drizzle/0001_orange_onslaught.sql`도 같은 명령의 `--file`에 해당 파일명을 넣어 적용합니다. 이미 적용한 SQL은 재실행하지 않습니다.
+`drizzle/0001_orange_onslaught.sql`과 `drizzle/0002_previous_joystick.sql`도 같은 명령의 `--file`에 해당 파일명을 넣어 순서대로 적용합니다. 이미 적용한 SQL은 재실행하지 않습니다.
 
 ```sh
 npm run dev
